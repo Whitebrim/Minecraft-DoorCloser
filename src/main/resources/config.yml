@@ -40,11 +40,11 @@ PlaySound: true
 # IgnoreIfInCreative: true if you want to ignore the door when the player
 # is in creative mode if this is not set to true, you'll never be able to
 # create an open door unless you turn on sneaking.
-IgnoreIfInCreative: true
+IgnoreIfInCreative: false
 
 # IgnoreIfSneaking: true if you want to ignore the door when the player is
 # sneaking. This will work for all players, not just someone in creative
-IgnoreIfSneaking: false
+IgnoreIfSneaking: true
 
 # List of Block IDs for blocks (trap doors, gates, and doors) that you want to auto-close
 # Case is not important, but use the official block names as found here:
