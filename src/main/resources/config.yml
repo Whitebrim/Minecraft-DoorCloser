@@ -58,6 +58,7 @@ TrapDoorBlocks:
 - spruce_trapdoor
 - warped_trapdoor
 - crimson_trapdoor
+- mangrove_trapdoor
 
 GateBlocks:
 - oak_fence_gate
@@ -68,6 +69,8 @@ GateBlocks:
 - acacia_fence_gate
 - warped_fence_gate
 - crimson_fence_gate
+- mangrove_fence_gate
+
 
 DoorBlocks:
 - oak_door
@@ -78,3 +81,4 @@ DoorBlocks:
 - dark_oak_door
 - warped_door
 - crimson_door
+- mangrove_door
