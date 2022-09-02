@@ -17,17 +17,13 @@ public class Settings {
     public static boolean ignoreCanceledEvents = ignoreCanceledEvents_Default;
 
     final static String secondsToRemainOpen_Key = "Time";
-    final static int secondsToRemainOpen_Default = 5;
-    public static int secondsToRemainOpen = secondsToRemainOpen_Default;
+    final static float secondsToRemainOpen_Default = 3.0f;
+    public static float secondsToRemainOpen = secondsToRemainOpen_Default;
 
 
-    final static String synchronizeDoubleDoorOpen_Key = "SynchronizeDoubleDoorOpen";
-    final static boolean synchronizeDoubleDoorOpen_Default = true;
-    public static boolean synchronizeDoubleDoorOpen = synchronizeDoubleDoorOpen_Default;
-
-    final static String synchronizeDoubleDoorClose_Key = "SynchronizeDoubleDoorClose1";
-    final static boolean synchronizeDoubleDoorClose_Default = true;
-    public static boolean synchronizeDoubleDoorClose = synchronizeDoubleDoorClose_Default;
+    final static String synchronizeDoubleDoor_Key = "SynchronizeDoubleDoor";
+    final static boolean synchronizeDoubleDoor_Default = true;
+    public static boolean synchronizeDoubleDoor = synchronizeDoubleDoor_Default;
 
     final static String playSound_Key = "PlaySound";
     final static boolean playSound_Default = true;
@@ -41,6 +37,10 @@ public class Settings {
     final static String ignoreIfSneaking_Key = "IgnoreIfSneaking";
     final static boolean ignoreIfSneaking_Default = false;
     public static boolean ignoreIfSneaking = ignoreIfSneaking_Default;
+
+    final static String bypassPermission_Key = "BypassPermission";
+    final static String bypassPermission_Default = "doorcloser.bypass";
+    public static String bypassPermission = bypassPermission_Default;
 
     final static String trapDoorsInScope_Key = "TrapDoorBlocks";
     public static List<Material> trapDoorsInScope = new ArrayList<Material>();
@@ -74,31 +74,31 @@ public class Settings {
 
         config.addDefault(configFileGeneratedByVersion_Key, configFileGeneratedByVersion_Default);
         config.addDefault(secondsToRemainOpen_Key, secondsToRemainOpen_Default);
-        config.addDefault(synchronizeDoubleDoorOpen_Key, synchronizeDoubleDoorOpen_Default);
-        config.addDefault(synchronizeDoubleDoorClose_Key, synchronizeDoubleDoorClose_Default);
+        config.addDefault(synchronizeDoubleDoor_Key, synchronizeDoubleDoor_Default);
         config.addDefault(playSound_Key, playSound_Default);
         config.addDefault(ignoreIfInCreative_Key, ignoreIfInCreative_Default);
         config.addDefault(ignoreIfSneaking_Key, ignoreIfSneaking_Default);
+        config.addDefault(bypassPermission_Key, bypassPermission_Default);
 
         // read settings
 
-        Settings.configFileGeneratedByVersion = ThisPlugin.getConfig().getString(configFileGeneratedByVersion_Key);
+        Settings.configFileGeneratedByVersion = config.getString(configFileGeneratedByVersion_Key);
         Settings.ignoreCanceledEvents = config.getBoolean(ignoreCanceledEvents_Key);
 
-        Settings.secondsToRemainOpen = ThisPlugin.getConfig().getInt(secondsToRemainOpen_Key);
+        Settings.secondsToRemainOpen = config.getInt(secondsToRemainOpen_Key);
 
-        Settings.synchronizeDoubleDoorOpen = ThisPlugin.getConfig().getBoolean(synchronizeDoubleDoorOpen_Key);
-        Settings.synchronizeDoubleDoorClose = ThisPlugin.getConfig().getBoolean(synchronizeDoubleDoorClose_Key);
+        Settings.synchronizeDoubleDoor = config.getBoolean(synchronizeDoubleDoor_Key);
 
-        Settings.playSound = ThisPlugin.getConfig().getBoolean(playSound_Key);
+        Settings.playSound = config.getBoolean(playSound_Key);
 
-        Settings.ignoreIfInCreative = ThisPlugin.getConfig().getBoolean(ignoreIfInCreative_Key);
-        Settings.ignoreIfSneaking = ThisPlugin.getConfig().getBoolean(ignoreIfSneaking_Key);
+        Settings.ignoreIfInCreative = config.getBoolean(ignoreIfInCreative_Key);
+        Settings.ignoreIfSneaking = config.getBoolean(ignoreIfSneaking_Key);
+        Settings.bypassPermission = config.getString(bypassPermission_Key);
 
         // the actual blocks to interact with
-        List<String> trapDoorsInScopeStrings = (List<String>) ThisPlugin.getConfig().getStringList(trapDoorsInScope_Key);
-        List<String> gatesInScopeStrings = (List<String>) ThisPlugin.getConfig().getStringList(gatesInScope_Key);
-        List<String> doorsInScopeStrings = (List<String>) ThisPlugin.getConfig().getStringList(doorsInScope_Key);
+        List<String> trapDoorsInScopeStrings = (List<String>) config.getStringList(trapDoorsInScope_Key);
+        List<String> gatesInScopeStrings = (List<String>) config.getStringList(gatesInScope_Key);
+        List<String> doorsInScopeStrings = (List<String>) config.getStringList(doorsInScope_Key);
 
 
         trapDoorsInScope.clear();
@@ -143,15 +143,15 @@ public class Settings {
             ThisPlugin.getLogger().warning("The DoorCloser plugin will still run and consume resources.");
             ThisPlugin.getLogger().warning("Update the configuration file and then use the /dcreload command to reload it.");
         } else {
-            ThisPlugin.getLogger().info("Count of trap doors in scope: " + Settings.trapDoorsInScope.size());
-            ThisPlugin.getLogger().info("Count of gate types in scope: " + Settings.gatesInScope.size());
-            ThisPlugin.getLogger().info("Count of door types in scope: " + Settings.doorsInScope.size());
+            //ThisPlugin.getLogger().info("Count of trap doors in scope: " + Settings.trapDoorsInScope.size());
+            //ThisPlugin.getLogger().info("Count of gate types in scope: " + Settings.gatesInScope.size());
+            //ThisPlugin.getLogger().info("Count of door types in scope: " + Settings.doorsInScope.size());
         }
 
-        ThisPlugin.getLogger().info("Seconds to remain open: " + Settings.secondsToRemainOpen);
-        ThisPlugin.getLogger().info("Ignore if in creative mode: " + Settings.ignoreIfInCreative);
-        ThisPlugin.getLogger().info("Ignore if sneaking: " + Settings.ignoreIfSneaking);
-        ThisPlugin.getLogger().info("Play sound: " + Settings.playSound);
-        ThisPlugin.getLogger().info("Config file generated by version: " + Settings.configFileGeneratedByVersion);
+        //ThisPlugin.getLogger().info("Seconds to remain open: " + Settings.secondsToRemainOpen);
+        //ThisPlugin.getLogger().info("Ignore if in creative mode: " + Settings.ignoreIfInCreative);
+        //ThisPlugin.getLogger().info("Ignore if sneaking: " + Settings.ignoreIfSneaking);
+        //ThisPlugin.getLogger().info("Play sound: " + Settings.playSound);
+        //ThisPlugin.getLogger().info("Config file generated by version: " + Settings.configFileGeneratedByVersion);
     }
 }
