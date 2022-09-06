@@ -1,5 +1,9 @@
 # Ignore these:
 target/*
+.idea/*
+.metadata/*
+.vscode/*
+.settings/*
 
 # Don't ignore these:
 !target/DoorCloser-*.jar
